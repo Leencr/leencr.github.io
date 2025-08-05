@@ -37,24 +37,13 @@
       box-shadow: 0 0 25px rgba(250, 204, 21, 0.9);
     }
 
-    .magic-card h2 {
-      color: #1e3a8a;
-      font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-
-    .magic-card:hover h2 {
-      color: #d97706;
-      text-shadow: 0 0 8px rgba(250, 204, 21, 1);
-    }
-
     .magic-icon {
       font-size: 2.5rem;
     }
 
     .magic-subtitle {
-      color: #374151;
+      /* color base, se sobreescribe por casa */
+      transition: color 0.3s, text-shadow 0.3s;
     }
 
     /* Estrellas mágicas de fondo */
@@ -114,32 +103,103 @@
       filter: drop-shadow(0 0 5px);
     }
 
-    /* Colores por casa */
-    /* Gryffindor: rojo y dorado */
-    .gryffindor svg.filled {
+    /* Colores y sombras para cada casa */
+
+    /* Gryffindor */
+    .gryffindor h2 {
+      font-family: 'Cinzel', serif;
+      color: #b91c1c; /* rojo */
+      text-shadow: 0 0 4px #facc15aa; /* brillo dorado suave */
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .gryffindor .magic-subtitle {
+      color: #facc1580; /* dorado suave */
+      transition: color 0.3s;
+    }
+    .gryffindor:hover h2 {
+      color: #facc15; /* dorado fuerte */
+      text-shadow: 0 0 8px #facc15;
+    }
+    .gryffindor:hover .magic-subtitle {
+      color: #facc15cc;
+    }
+    .gryffindor .rating-stars svg.filled {
       fill: #b91c1c;
       stroke: #facc15;
       filter: drop-shadow(0 0 6px #facc15);
     }
-    /* Slytherin: verde y plateado */
-    .slytherin svg.filled {
+
+    /* Slytherin */
+    .slytherin h2 {
+      font-family: 'Cinzel', serif;
+      color: #15803d; /* verde */
+      text-shadow: 0 0 4px #cbd5e1aa; /* brillo plateado suave */
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .slytherin .magic-subtitle {
+      color: #cbd5e180; /* plateado suave */
+      transition: color 0.3s;
+    }
+    .slytherin:hover h2 {
+      color: #cbd5e1; /* plateado fuerte */
+      text-shadow: 0 0 8px #cbd5e1;
+    }
+    .slytherin:hover .magic-subtitle {
+      color: #cbd5e1cc;
+    }
+    .slytherin .rating-stars svg.filled {
       fill: #15803d;
       stroke: #cbd5e1;
       filter: drop-shadow(0 0 6px #cbd5e1);
     }
-    /* Hufflepuff: amarillo y negro */
-    .hufflepuff svg.filled {
+
+    /* Hufflepuff */
+    .hufflepuff h2 {
+      font-family: 'Cinzel', serif;
+      color: #fbbf24; /* amarillo */
+      text-shadow: 0 0 4px #1f2937aa; /* sombra negra suave */
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .hufflepuff .magic-subtitle {
+      color: #1f293780; /* negro suave */
+      transition: color 0.3s;
+    }
+    .hufflepuff:hover h2 {
+      color: #fbbf24;
+      text-shadow: 0 0 8px #fbbf24;
+    }
+    .hufflepuff:hover .magic-subtitle {
+      color: #fbbf24cc;
+    }
+    .hufflepuff .rating-stars svg.filled {
       fill: #fbbf24;
       stroke: #1f2937;
       filter: drop-shadow(0 0 6px #fbbf24);
     }
-    /* Ravenclaw: azul y bronce */
-    .ravenclaw svg.filled {
+
+    /* Ravenclaw */
+    .ravenclaw h2 {
+      font-family: 'Cinzel', serif;
+      color: #1e40af; /* azul */
+      text-shadow: 0 0 4px #b87333aa; /* brillo bronce suave */
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .ravenclaw .magic-subtitle {
+      color: #b8733380; /* bronce suave */
+      transition: color 0.3s;
+    }
+    .ravenclaw:hover h2 {
+      color: #b87333; /* bronce */
+      text-shadow: 0 0 8px #b87333;
+    }
+    .ravenclaw:hover .magic-subtitle {
+      color: #b87333cc;
+    }
+    .ravenclaw .rating-stars svg.filled {
       fill: #1e40af;
       stroke: #b87333;
       filter: drop-shadow(0 0 6px #b87333);
     }
-
   </style>
 </head>
 <body class="min-h-screen p-6">
@@ -155,29 +215,29 @@
 
       <div class="magic-card gryffindor">
         <div class="magic-icon">🌐</div>
-        <h2 class="text-xl mt-2">Conversor de Zonas Horarias</h2>
-        <p class="magic-subtitle text-sm mt-1">Convierte zonas horarias al horario de Costa Rica.</p>
+        <h2>Conversor de Zonas Horarias</h2>
+        <p class="magic-subtitle">Convierte zonas horarias al horario de Costa Rica.</p>
         <div class="rating-stars gryffindor" data-house="gryffindor"></div>
       </div>
 
       <div class="magic-card slytherin">
         <div class="magic-icon">🌎</div>
-        <h2 class="text-xl mt-2">Conversor de Países</h2>
-        <p class="magic-subtitle text-sm mt-1">Muestra la abreviatura de países y monedas.</p>
+        <h2>Conversor de Países</h2>
+        <p class="magic-subtitle">Muestra la abreviatura de países y monedas.</p>
         <div class="rating-stars slytherin" data-house="slytherin"></div>
       </div>
 
       <div class="magic-card hufflepuff">
         <div class="magic-icon">🧠</div>
-        <h2 class="text-xl mt-2">Test de Burnout</h2>
-        <p class="magic-subtitle text-sm mt-1">Evalúa tu nivel de energía y estrés.</p>
+        <h2>Test de Burnout</h2>
+        <p class="magic-subtitle">Evalúa tu nivel de energía y estrés.</p>
         <div class="rating-stars hufflepuff" data-house="hufflepuff"></div>
       </div>
 
       <div class="magic-card ravenclaw">
         <div class="magic-icon">📚</div>
-        <h2 class="text-xl mt-2">Book Dragon Club</h2>
-        <p class="magic-subtitle text-sm mt-1">Califica y organiza tus libros mágicamente.</p>
+        <h2>Book Dragon Club</h2>
+        <p class="magic-subtitle">Califica y organiza tus libros mágicamente.</p>
         <div class="rating-stars ravenclaw" data-house="ravenclaw"></div>
       </div>
 
@@ -222,7 +282,6 @@
           <polygon points="12 2 15 8.5 22 9.3 17 14.1 18.5 21 12 17.8 5.5 21 7 14.1 2 9.3 9 8.5" />
         `;
 
-        // Eventos para hover y click
         star.addEventListener('mouseenter', () => highlightStars(i));
         star.addEventListener('mouseleave', () => highlightStars(currentRating));
         star.addEventListener('click', () => {
@@ -244,7 +303,6 @@
         });
       }
 
-      // Inicializa sin estrellas llenas
       highlightStars(0);
     });
   </script>

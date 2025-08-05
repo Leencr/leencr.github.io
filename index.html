@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página de Inicio - Book Magic</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Cinzel:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Cinzel:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       background: url('https://www.transparenttextures.com/patterns/old-wallpaper.png'), linear-gradient(to bottom right, #1e3a8a, #312e81);
@@ -13,6 +13,7 @@
       color: #f8f8f8;
       font-family: 'Macondo', cursive;
       overflow-x: hidden;
+      padding-bottom: 80px;
     }
 
     h1 {
@@ -21,7 +22,7 @@
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     }
 
-    a.magic-card {
+    .magic-card {
       background: rgba(255, 255, 255, 0.95);
       border: 2px solid #d4af37;
       border-radius: 1rem;
@@ -29,28 +30,22 @@
       text-align: center;
       position: relative;
       z-index: 2;
-      padding-bottom: 3rem; /* espacio para estrellas */
-      text-decoration: none;
-      cursor: pointer;
-      display: block;
-      color: inherit; /* para que el texto no cambie al ser enlace */
     }
 
-    a.magic-card:hover {
+    .magic-card:hover {
       transform: scale(1.08);
       box-shadow: 0 0 25px rgba(250, 204, 21, 0.9);
     }
 
-    .magic-icon {
-      font-size: 2.5rem;
+    .magic-card h2 {
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
     }
 
-    .magic-subtitle {
-      /* color base, se sobreescribe por casa */
-      transition: color 0.3s, text-shadow 0.3s;
-    }
+    .magic-icon { font-size: 2.5rem; }
+    .magic-subtitle { color: #374151; }
 
-    /* Estrellas mágicas de fondo */
+    /* Estrellas mágicas */
     .stars {
       position: fixed;
       top: 0;
@@ -80,135 +75,38 @@
       to { transform: translateY(100vh) }
     }
 
-    /* Estrellas de calificación */
-    .rating-stars {
-      position: absolute;
-      bottom: 0.8rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 6px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .rating-stars svg {
-      width: 28px;
-      height: 28px;
-      transition: fill 0.3s, stroke 0.3s, filter 0.3s;
-      stroke-width: 2;
-      stroke-linejoin: round;
-      stroke-linecap: round;
-      fill: none;
-      stroke: #94a3b8; /* gris claro default */
-    }
-
-    .rating-stars svg.filled {
-      filter: drop-shadow(0 0 5px);
-    }
-
-    /* Colores y sombras para cada casa */
-
-    /* Gryffindor */
-    .gryffindor h2 {
+    /* Firma mágica */
+    .signature {
+      text-align: center;
+      margin-top: 50px;
       font-family: 'Cinzel', serif;
-      color: #b91c1c; /* rojo */
-      text-shadow: 0 0 4px #facc15aa; /* brillo dorado suave */
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-    .gryffindor .magic-subtitle {
-      color: #facc1580; /* dorado suave */
-      transition: color 0.3s;
-    }
-    a.gryffindor:hover h2 {
-      color: #facc15; /* dorado fuerte */
-      text-shadow: 0 0 8px #facc15;
-    }
-    a.gryffindor:hover .magic-subtitle {
-      color: #facc15cc;
-    }
-    .gryffindor .rating-stars svg.filled {
-      fill: #b91c1c;
-      stroke: #facc15;
-      filter: drop-shadow(0 0 6px #facc15);
+      position: relative;
+      z-index: 10;
     }
 
-    /* Slytherin */
-    .slytherin h2 {
-      font-family: 'Cinzel', serif;
-      color: #15803d; /* verde */
-      text-shadow: 0 0 4px #cbd5e1aa; /* brillo plateado suave */
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-    .slytherin .magic-subtitle {
-      color: #cbd5e180; /* plateado suave */
-      transition: color 0.3s;
-    }
-    a.slytherin:hover h2 {
-      color: #cbd5e1; /* plateado fuerte */
-      text-shadow: 0 0 8px #cbd5e1;
-    }
-    a.slytherin:hover .magic-subtitle {
-      color: #cbd5e1cc;
-    }
-    .slytherin .rating-stars svg.filled {
-      fill: #15803d;
-      stroke: #cbd5e1;
-      filter: drop-shadow(0 0 6px #cbd5e1);
+    .signature .main {
+      font-size: 0.9rem;
+      animation: glow-houses 6s infinite linear;
     }
 
-    /* Hufflepuff */
-    .hufflepuff h2 {
-      font-family: 'Cinzel', serif;
-      color: #fbbf24; /* amarillo */
-      text-shadow: 0 0 4px #1f2937aa; /* sombra negra suave */
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-    .hufflepuff .magic-subtitle {
-      color: #1f293780; /* negro suave */
-      transition: color 0.3s;
-    }
-    a.hufflepuff:hover h2 {
-      color: #fbbf24;
-      text-shadow: 0 0 8px #fbbf24;
-    }
-    a.hufflepuff:hover .magic-subtitle {
-      color: #fbbf24cc;
-    }
-    .hufflepuff .rating-stars svg.filled {
-      fill: #fbbf24;
-      stroke: #1f2937;
-      filter: drop-shadow(0 0 6px #fbbf24);
+    .signature .sub {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
     }
 
-    /* Ravenclaw */
-    .ravenclaw h2 {
-      font-family: 'Cinzel', serif;
-      color: #1e40af; /* azul */
-      text-shadow: 0 0 4px #b87333aa; /* brillo bronce suave */
-      transition: color 0.3s, text-shadow 0.3s;
-    }
-    .ravenclaw .magic-subtitle {
-      color: #b8733380; /* bronce suave */
-      transition: color 0.3s;
-    }
-    a.ravenclaw:hover h2 {
-      color: #b87333; /* bronce */
-      text-shadow: 0 0 8px #b87333;
-    }
-    a.ravenclaw:hover .magic-subtitle {
-      color: #b87333cc;
-    }
-    .ravenclaw .rating-stars svg.filled {
-      fill: #1e40af;
-      stroke: #b87333;
-      filter: drop-shadow(0 0 6px #b87333);
+    @keyframes glow-houses {
+      0% { text-shadow: 0 0 10px #b91c1c; color: #b91c1c; }       /* Gryffindor */
+      25% { text-shadow: 0 0 10px #065f46; color: #10b981; }      /* Slytherin */
+      50% { text-shadow: 0 0 10px #1e3a8a; color: #3b82f6; }      /* Ravenclaw */
+      75% { text-shadow: 0 0 10px #facc15; color: #facc15; }      /* Hufflepuff */
+      100% { text-shadow: 0 0 10px #b91c1c; color: #b91c1c; }
     }
   </style>
 </head>
 <body class="min-h-screen p-6">
 
-  <!-- Estrellas mágicas de fondo -->
+  <!-- Estrellas mágicas -->
   <div class="stars" id="stars"></div>
 
   <div class="max-w-5xl mx-auto text-center relative z-10">
@@ -216,48 +114,39 @@
     <p class="text-lg mb-10 text-yellow-100">"No son nuestras habilidades las que muestran quiénes somos, sino nuestras elecciones." – Dumbledore</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
-
-      <a href="https://leencr.github.io/timezone/" target="_blank" rel="noopener noreferrer" class="magic-card gryffindor">
+      <a href="https://leencr.github.io/timezone/" class="magic-card p-6">
         <div class="magic-icon">🌐</div>
-        <h2>Conversor de Zonas Horarias</h2>
-        <p class="magic-subtitle">Convierte zonas horarias al horario de Costa Rica.</p>
-        <div class="rating-stars gryffindor" data-house="gryffindor"></div>
+        <h2 class="text-xl mt-2">Conversor de Zonas Horarias</h2>
+        <p class="magic-subtitle text-sm mt-1">Convierte zonas horarias al horario de Costa Rica.</p>
       </a>
 
-      <a href="https://leencr.github.io/paises/" target="_blank" rel="noopener noreferrer" class="magic-card slytherin">
+      <a href="https://leencr.github.io/paises/" class="magic-card p-6">
         <div class="magic-icon">🌎</div>
-        <h2>Conversor de Países</h2>
-        <p class="magic-subtitle">Muestra la abreviatura de países y monedas.</p>
-        <div class="rating-stars slytherin" data-house="slytherin"></div>
+        <h2 class="text-xl mt-2">Conversor de Países</h2>
+        <p class="magic-subtitle text-sm mt-1">Muestra la abreviatura de países y monedas.</p>
       </a>
 
-      <a href="https://leencr.github.io/burnout-test/" target="_blank" rel="noopener noreferrer" class="magic-card hufflepuff">
+      <a href="https://leencr.github.io/burnout-test/" class="magic-card p-6">
         <div class="magic-icon">🧠</div>
-        <h2>Test de Burnout</h2>
-        <p class="magic-subtitle">Evalúa tu nivel de energía y estrés.</p>
-        <div class="rating-stars hufflepuff" data-house="hufflepuff"></div>
+        <h2 class="text-xl mt-2">Test de Burnout</h2>
+        <p class="magic-subtitle text-sm mt-1">Evalúa tu nivel de energía y estrés.</p>
       </a>
 
-      <a href="https://leencr.github.io/BookDragonClub/" target="_blank" rel="noopener noreferrer" class="magic-card ravenclaw">
+      <a href="https://leencr.github.io/BookDragonClub/" class="magic-card p-6">
         <div class="magic-icon">📚</div>
-        <h2>Book Dragon Club</h2>
-        <p class="magic-subtitle">Califica y organiza tus libros mágicamente.</p>
-        <div class="rating-stars ravenclaw" data-house="ravenclaw"></div>
+        <h2 class="text-xl mt-2">Book Dragon Club</h2>
+        <p class="magic-subtitle text-sm mt-1">Califica y organiza tus libros mágicamente.</p>
       </a>
-
-    </div>
-    <!-- Firma -->
-  <div class="text-center mt-8">
-    <div class="text-sm text-white/70 hover:text-white transition-colors duration-300">
-      ✨ Creado con magia por ECB 📚
-    </div>
-    <div class="text-xs text-white/50 mt-1">
-      © 2025 Book Dragon Club
     </div>
   </div>
 
+  <!-- Firma -->
+  <div class="signature">
+    <div class="main">✨ Creado con magia por ECB 📚</div>
+    <div class="sub">© 2025 Book Dragon Club</div>
+  </div>
+
   <script>
-    // Estrellas mágicas de fondo
     const starsContainer = document.getElementById('stars');
     for (let i = 0; i < 60; i++) {
       const star = document.createElement('div');
@@ -270,55 +159,6 @@
       star.style.animationDuration = 5 + Math.random() * 5 + 's';
       starsContainer.appendChild(star);
     }
-
-    // Crear las estrellas SVG para cada rating-stars
-    const ratingContainers = document.querySelectorAll('.rating-stars');
-
-    ratingContainers.forEach(container => {
-      let currentRating = 0;
-      const house = container.dataset.house;
-
-      for (let i = 1; i <= 5; i++) {
-        const star = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        star.setAttribute('viewBox', '0 0 24 24');
-        star.setAttribute('fill', 'none');
-        star.setAttribute('stroke-width', '2');
-        star.setAttribute('stroke-linejoin', 'round');
-        star.setAttribute('stroke-linecap', 'round');
-        star.style.width = '28px';
-        star.style.height = '28px';
-        star.style.cursor = 'pointer';
-        star.dataset.value = i;
-
-        star.innerHTML = `
-          <polygon points="12 2 15 8.5 22 9.3 17 14.1 18.5 21 12 17.8 5.5 21 7 14.1 2 9.3 9 8.5" />
-        `;
-
-        star.addEventListener('mouseenter', () => highlightStars(i));
-        star.addEventListener('mouseleave', () => highlightStars(currentRating));
-        star.addEventListener('click', () => {
-          currentRating = i;
-          highlightStars(currentRating);
-        });
-
-        container.appendChild(star);
-      }
-
-      function highlightStars(rating) {
-        [...container.children].forEach(star => {
-          const val = parseInt(star.dataset.value);
-          if (val <= rating) {
-            star.classList.add('filled');
-          } else {
-            star.classList.remove('filled');
-          }
-        });
-      }
-
-      highlightStars(0);
-    });
   </script>
-
 </body>
 </html>
-

@@ -8,12 +8,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Cinzel:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
-      background: url('https://www.transparenttextures.com/patterns/old-wallpaper.png'), linear-gradient(to bottom right, #1e3a8a, #312e81);
+      background: url('https://www.transparenttextures.com/patterns/old-wallpaper.png'), 
+                  linear-gradient(to bottom right, #1e3a8a, #312e81);
       background-size: auto;
       color: #f8f8f8;
       font-family: 'Macondo', cursive;
       overflow-x: hidden;
-      padding-bottom: 80px;
+      padding-bottom: 120px;
     }
 
     h1 {
@@ -22,10 +23,11 @@
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
     }
 
+    /* Tarjetas mágicas */
     .magic-card {
       background: rgba(255, 255, 255, 0.95);
-      border: 2px solid #d4af37;
       border-radius: 1rem;
+      border: 2px solid;
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
       position: relative;
@@ -37,13 +39,34 @@
       box-shadow: 0 0 25px rgba(250, 204, 21, 0.9);
     }
 
-    .magic-card h2 {
-      font-weight: bold;
-      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    .magic-icon {
+      font-size: 2.5rem;
     }
 
-    .magic-icon { font-size: 2.5rem; }
-    .magic-subtitle { color: #374151; }
+    .magic-subtitle {
+      color: #374151;
+    }
+
+    /* Colores por casa */
+    .gryffindor {
+      border-color: #b91c1c;
+    }
+    .gryffindor h2, .gryffindor p { color: #7f1d1d; }
+
+    .slytherin {
+      border-color: #065f46;
+    }
+    .slytherin h2, .slytherin p { color: #064e3b; }
+
+    .hufflepuff {
+      border-color: #ca8a04;
+    }
+    .hufflepuff h2, .hufflepuff p { color: #78350f; }
+
+    .ravenclaw {
+      border-color: #1e3a8a;
+    }
+    .ravenclaw h2, .ravenclaw p { color: #1e40af; }
 
     /* Estrellas mágicas */
     .stars {
@@ -59,7 +82,6 @@
 
     .star {
       position: absolute;
-      background: white;
       border-radius: 50%;
       opacity: 0.8;
       animation: twinkle 3s infinite ease-in-out, moveStar 10s linear infinite;
@@ -71,22 +93,24 @@
     }
 
     @keyframes moveStar {
-      from { transform: translateY(0) }
-      to { transform: translateY(100vh) }
+      from { transform: translateY(0); }
+      to { transform: translateY(100vh); }
     }
 
-    /* Firma mágica */
+    /* Firma mágica multicolor */
     .signature {
       text-align: center;
       margin-top: 50px;
       font-family: 'Cinzel', serif;
-      position: relative;
-      z-index: 10;
     }
 
     .signature .main {
       font-size: 0.9rem;
-      animation: glow-houses 6s infinite linear;
+      background: linear-gradient(90deg, #b91c1c, #065f46, #ca8a04, #1e3a8a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 4s infinite linear;
     }
 
     .signature .sub {
@@ -95,12 +119,9 @@
       margin-top: 4px;
     }
 
-    @keyframes glow-houses {
-      0% { text-shadow: 0 0 10px #b91c1c; color: #b91c1c; }       /* Gryffindor */
-      25% { text-shadow: 0 0 10px #065f46; color: #10b981; }      /* Slytherin */
-      50% { text-shadow: 0 0 10px #1e3a8a; color: #3b82f6; }      /* Ravenclaw */
-      75% { text-shadow: 0 0 10px #facc15; color: #facc15; }      /* Hufflepuff */
-      100% { text-shadow: 0 0 10px #b91c1c; color: #b91c1c; }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
   </style>
 </head>
@@ -114,29 +135,31 @@
     <p class="text-lg mb-10 text-yellow-100">"No son nuestras habilidades las que muestran quiénes somos, sino nuestras elecciones." – Dumbledore</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
-      <a href="https://leencr.github.io/timezone/" class="magic-card p-6">
-        <div class="magic-icon">🌐</div>
+
+      <a href="https://leencr.github.io/timezone/" class="magic-card gryffindor p-6">
+        <div class="magic-icon">🦁</div>
         <h2 class="text-xl mt-2">Conversor de Zonas Horarias</h2>
         <p class="magic-subtitle text-sm mt-1">Convierte zonas horarias al horario de Costa Rica.</p>
       </a>
 
-      <a href="https://leencr.github.io/paises/" class="magic-card p-6">
-        <div class="magic-icon">🌎</div>
+      <a href="https://leencr.github.io/paises/" class="magic-card slytherin p-6">
+        <div class="magic-icon">🐍</div>
         <h2 class="text-xl mt-2">Conversor de Países</h2>
         <p class="magic-subtitle text-sm mt-1">Muestra la abreviatura de países y monedas.</p>
       </a>
 
-      <a href="https://leencr.github.io/burnout-test/" class="magic-card p-6">
-        <div class="magic-icon">🧠</div>
+      <a href="https://leencr.github.io/burnout-test/" class="magic-card hufflepuff p-6">
+        <div class="magic-icon">🦡</div>
         <h2 class="text-xl mt-2">Test de Burnout</h2>
         <p class="magic-subtitle text-sm mt-1">Evalúa tu nivel de energía y estrés.</p>
       </a>
 
-      <a href="https://leencr.github.io/BookDragonClub/" class="magic-card p-6">
-        <div class="magic-icon">📚</div>
+      <a href="https://leencr.github.io/BookDragonClub/" class="magic-card ravenclaw p-6">
+        <div class="magic-icon">🦅</div>
         <h2 class="text-xl mt-2">Book Dragon Club</h2>
         <p class="magic-subtitle text-sm mt-1">Califica y organiza tus libros mágicamente.</p>
       </a>
+
     </div>
   </div>
 
@@ -148,6 +171,8 @@
 
   <script>
     const starsContainer = document.getElementById('stars');
+    const starColors = ['#b91c1c', '#facc15', '#065f46', '#1e3a8a']; // Colores de las casas
+
     for (let i = 0; i < 60; i++) {
       const star = document.createElement('div');
       const size = Math.random() * 3 + 2 + 'px';
@@ -156,9 +181,11 @@
       star.style.height = size;
       star.style.left = Math.random() * 100 + 'vw';
       star.style.top = Math.random() * 100 + 'vh';
+      star.style.background = starColors[Math.floor(Math.random() * starColors.length)];
       star.style.animationDuration = 5 + Math.random() * 5 + 's';
       starsContainer.appendChild(star);
     }
   </script>
+
 </body>
 </html>

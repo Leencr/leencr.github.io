@@ -3,36 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página de Inicio</title>
+  <title>Página de Inicio - Book Magic</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url('https://www.transparenttextures.com/patterns/aged-paper.png'), linear-gradient(to bottom right, #1e3a8a, #312e81);
+      color: #f8f8f8;
+      font-family: 'Macondo', cursive;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      color: #facc15;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .magic-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid #d4af37;
+      border-radius: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .magic-card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.8);
+    }
+
+    .magic-icon {
+      font-size: 2.5rem;
+    }
+
+    .magic-subtitle {
+      color: #374151;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 min-h-screen p-6">
-  <div class="max-w-5xl mx-auto">
-    <h1 class="text-4xl font-bold text-center text-indigo-800 mb-10">Mis Herramientas Personales</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      
-      <a href="https://leencr.github.io/timezone/" class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition">
-        <div class="text-2xl">🌐</div>
-        <h2 class="text-lg font-semibold text-gray-800 mt-2">Conversor de Zonas Horarias</h2>
-        <p class="text-gray-600 text-sm mt-1">Convierte zonas horarias al horario de Costa Rica.</p>
-      </a>
-      
-      <a href="https://leencr.github.io/paises/" class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition">
-        <div class="text-2xl">🌎</div>
-        <h2 class="text-lg font-semibold text-gray-800 mt-2">Conversor de Países</h2>
-        <p class="text-gray-600 text-sm mt-1">Muestra la abreviatura de países y monedas.</p>
-      </a>
-      
-      <a href="https://leencr.github.io/burnout-test/" class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition">
-        <div class="text-2xl">🧠</div>
-        <h2 class="text-lg font-semibold text-gray-800 mt-2">Test de Burnout</h2>
-        <p class="text-gray-600 text-sm mt-1">Evalúa tu nivel de energía y estrés.</p>
+<body class="min-h-screen p-6">
+  <div class="max-w-5xl mx-auto text-center">
+    <h1 class="text-5xl font-bold mb-4">✨ Bienvenida al Rincón de Magia y Libros ✨</h1>
+    <p class="text-lg mb-10 text-yellow-100">"No son nuestras habilidades las que muestran quiénes somos, sino nuestras elecciones." – Dumbledore</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
+
+      <a href="https://leencr.github.io/timezone/" class="magic-card p-6">
+        <div class="magic-icon">🌐</div>
+        <h2 class="text-xl font-semibold mt-2">Conversor de Zonas Horarias</h2>
+        <p class="magic-subtitle text-sm mt-1">Convierte zonas horarias al horario de Costa Rica.</p>
       </a>
 
-      <a href="https://leencr.github.io/BookDragonClub/" class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transform hover:scale-105 transition">
-        <div class="text-2xl">📚</div>
-        <h2 class="text-lg font-semibold text-gray-800 mt-2">Book Dragon Club</h2>
-        <p class="text-gray-600 text-sm mt-1">Califica y organiza tus libros mágicamente.</p>
+      <a href="https://leencr.github.io/paises/" class="magic-card p-6">
+        <div class="magic-icon">🌎</div>
+        <h2 class="text-xl font-semibold mt-2">Conversor de Países</h2>
+        <p class="magic-subtitle text-sm mt-1">Muestra la abreviatura de países y monedas.</p>
+      </a>
+
+      <a href="https://leencr.github.io/burnout-test/" class="magic-card p-6">
+        <div class="magic-icon">🧠</div>
+        <h2 class="text-xl font-semibold mt-2">Test de Burnout</h2>
+        <p class="magic-subtitle text-sm mt-1">Evalúa tu nivel de energía y estrés.</p>
+      </a>
+
+      <a href="https://leencr.github.io/BookDragonClub/" class="magic-card p-6">
+        <div class="magic-icon">📚</div>
+        <h2 class="text-xl font-semibold mt-2">Book Dragon Club</h2>
+        <p class="magic-subtitle text-sm mt-1">Califica y organiza tus libros mágicamente.</p>
       </a>
 
     </div>

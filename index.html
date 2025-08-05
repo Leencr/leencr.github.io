@@ -5,33 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página de Inicio - Book Magic</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Cinzel:wght@600&display=swap" rel="stylesheet" />
   <style>
     body {
-      background: url('https://www.transparenttextures.com/patterns/old-wallpaper.png'), 
-                  linear-gradient(to bottom right, #1e3a8a, #312e81);
-      background-size: auto;
+      background: url("https://i.ibb.co/35GDrS1D/vista-antiguo-pergamino-papel-escribir-documentar-23-2151751639.jpg") center/cover no-repeat fixed;
       color: #f8f8f8;
       font-family: 'Macondo', cursive;
       overflow-x: hidden;
       padding-bottom: 120px;
+      position: relative;
+    }
+
+    /* Capa de magia encima del pergamino */
+    .magic-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.6));
+      z-index: 0;
+      pointer-events: none;
     }
 
     h1 {
       font-family: 'Cinzel', serif;
       color: #facc15;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
     }
 
     /* Tarjetas mágicas */
     .magic-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.92);
       border-radius: 1rem;
       border: 2px solid;
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
       position: relative;
       z-index: 2;
+      width: 280px; /* tamaño fijo para consistencia */
+      margin: 0 auto;
     }
 
     .magic-card:hover {
@@ -39,8 +52,15 @@
       box-shadow: 0 0 25px rgba(250, 204, 21, 0.9);
     }
 
-    .magic-icon {
-      font-size: 2.5rem;
+    /* Ícono del escudo */
+    .shield-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin: 0 auto 0.75rem auto;
+      display: block;
+      filter: drop-shadow(0 0 3px rgba(0,0,0,0.4));
+      border-radius: 15%;
     }
 
     .magic-subtitle {
@@ -48,24 +68,16 @@
     }
 
     /* Colores por casa */
-    .gryffindor {
-      border-color: #b91c1c;
-    }
+    .gryffindor { border-color: #b91c1c; }
     .gryffindor h2, .gryffindor p { color: #7f1d1d; }
 
-    .slytherin {
-      border-color: #065f46;
-    }
+    .slytherin { border-color: #065f46; }
     .slytherin h2, .slytherin p { color: #064e3b; }
 
-    .hufflepuff {
-      border-color: #ca8a04;
-    }
+    .hufflepuff { border-color: #ca8a04; }
     .hufflepuff h2, .hufflepuff p { color: #78350f; }
 
-    .ravenclaw {
-      border-color: #1e3a8a;
-    }
+    .ravenclaw { border-color: #1e3a8a; }
     .ravenclaw h2, .ravenclaw p { color: #1e40af; }
 
     /* Estrellas mágicas */
@@ -76,7 +88,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      z-index: 0;
+      z-index: 1;
       pointer-events: none;
     }
 
@@ -84,12 +96,12 @@
       position: absolute;
       border-radius: 50%;
       opacity: 0.8;
-      animation: twinkle 3s infinite ease-in-out, moveStar 10s linear infinite;
+      animation: twinkle 3s infinite ease-in-out, moveStar 12s linear infinite;
     }
 
     @keyframes twinkle {
       0%, 100% { opacity: 0.2; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.3); }
+      50% { opacity: 1; transform: scale(1.4); }
     }
 
     @keyframes moveStar {
@@ -97,65 +109,62 @@
       to { transform: translateY(100vh); }
     }
 
-    /* Firma mágica multicolor */
+    /* Firma mágica estilo mapa */
     .signature {
       text-align: center;
       margin-top: 50px;
       font-family: 'Cinzel', serif;
+      z-index: 2;
+      position: relative;
     }
 
     .signature .main {
       font-size: 0.9rem;
-      background: linear-gradient(90deg, #b91c1c, #065f46, #ca8a04, #1e3a8a);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientShift 4s infinite linear;
+      color: #d4af37;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
     }
 
     .signature .sub {
       font-size: 0.7rem;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.7);
       margin-top: 4px;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
     }
   </style>
 </head>
 <body class="min-h-screen p-6">
+
+  <!-- Capa mágica -->
+  <div class="magic-overlay"></div>
 
   <!-- Estrellas mágicas -->
   <div class="stars" id="stars"></div>
 
   <div class="max-w-5xl mx-auto text-center relative z-10">
     <h1 class="text-5xl font-bold mb-4">✨ Bienvenida al Rincón de Magia y Libros ✨</h1>
-    <p class="text-lg mb-10 text-yellow-100">"No son nuestras habilidades las que muestran quiénes somos, sino nuestras elecciones." – Dumbledore</p>
+    <p class="text-lg mb-10 text-yellow-100">"Juro solemnemente que mis intenciones no son buenas..." – Mapa del Merodeador</p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 justify-center">
 
       <a href="https://leencr.github.io/timezone/" class="magic-card gryffindor p-6">
-        <div class="magic-icon">🦁</div>
+        <img src="https://i.ibb.co/BSYnTX6/Escudo-cute-Gryffindor.jpg" alt="Gryffindor" class="shield-icon" />
         <h2 class="text-xl mt-2">Conversor de Zonas Horarias</h2>
         <p class="magic-subtitle text-sm mt-1">Convierte zonas horarias al horario de Costa Rica.</p>
       </a>
 
       <a href="https://leencr.github.io/paises/" class="magic-card slytherin p-6">
-        <div class="magic-icon">🐍</div>
+        <img src="https://i.ibb.co/Q7bhsk1M/Escudo-cute-Slytherin.jpg" alt="Slytherin" class="shield-icon" />
         <h2 class="text-xl mt-2">Conversor de Países</h2>
         <p class="magic-subtitle text-sm mt-1">Muestra la abreviatura de países y monedas.</p>
       </a>
 
       <a href="https://leencr.github.io/burnout-test/" class="magic-card hufflepuff p-6">
-        <div class="magic-icon">🦡</div>
+        <img src="https://i.ibb.co/kgmLj6Gz/Escudo-cute-Hufflepuff.jpg" alt="Hufflepuff" class="shield-icon" />
         <h2 class="text-xl mt-2">Test de Burnout</h2>
         <p class="magic-subtitle text-sm mt-1">Evalúa tu nivel de energía y estrés.</p>
       </a>
 
       <a href="https://leencr.github.io/BookDragonClub/" class="magic-card ravenclaw p-6">
-        <div class="magic-icon">🦅</div>
+        <img src="https://i.ibb.co/MDKqR6Vn/Escudo-cute-Ravenclaw.jpg" alt="Ravenclaw" class="shield-icon" />
         <h2 class="text-xl mt-2">Book Dragon Club</h2>
         <p class="magic-subtitle text-sm mt-1">Califica y organiza tus libros mágicamente.</p>
       </a>
@@ -171,7 +180,7 @@
 
   <script>
     const starsContainer = document.getElementById('stars');
-    const starColors = ['#b91c1c', '#facc15', '#065f46', '#1e3a8a']; // Colores de las casas
+    const starColors = ['#d4af37', '#a67c00', '#fffbe6']; // tonos dorados y mágicos
 
     for (let i = 0; i < 60; i++) {
       const star = document.createElement('div');
